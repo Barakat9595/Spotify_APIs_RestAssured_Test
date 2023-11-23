@@ -33,7 +33,7 @@ public class ViewProfileInfo {
 {
 
     //String token = System.getenv("access_token");
-    System.out.println("Access Token: " + token); // Print for debugging purposes
+    System.out.println("Access Token: " + token);
 
     given()
             .header("Authorization", "Bearer " + token)

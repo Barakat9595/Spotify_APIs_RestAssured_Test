@@ -11,44 +11,23 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 
-public class GettingUserTopTrack {
+public class GettingUserTopTrack extends BaseTests {
     AuthClass authClass = new AuthClass();
     String token = authClass.getAccessToken();
 
 
-    private static ResponseSpecification responseSpec;
-    @BeforeClass
-    public void checkStatusCodeAndRespContentType()
-    {
-        responseSpec = new ResponseSpecBuilder().
-                expectStatusCode(200).
-                expectContentType(ContentType.JSON).
-                expectResponseTime(lessThan(3000L)) //-> L = milliseconds
-                .build();
-
-
-    }
-
-    @DataProvider
-    public static Object[][] providingItem() {
-        return new Object[][]{
-                {"tracks"}
-        };
-    }
-
-
-
-
-    @Test(dataProvider = "providingItem")
+    @Test(dataProvider = "providingItem", dataProviderClass = ProvidersClass.class)
     public void checkTopTrackName(String type) {
         given()
                 .pathParams("type", type)
                 .header("Authorization", "Bearer " + token)
                 .header("Accept", "application/json")
+                .log().all()
                 .when()
                 .get("https://api.spotify.com/v1/me/top/{type}")
                 .then()
-                .spec(responseSpec) // Use the response specification
+                .spec(responseSpec)
+                .log().all()// Use the response specification
                 .assertThat()
                 .body("items[0].name", equalTo("Adrenaline"));
     }

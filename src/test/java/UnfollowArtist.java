@@ -22,18 +22,11 @@ public class UnfollowArtist {
                     expectContentType(ContentType.JSON).
                     expectResponseTime(lessThan(3000L)) //-> L = milliseconds
                     .build();
-
-
-
-    }
-    @DataProvider
-    public static Object[][] providingQuesrParamTypeAndIds() {
-        return new Object[][]{
-                {"artist","5miyPYjh5EcpOSqloDJPID"}
-        };
     }
 
-    @Test(dataProvider = "providingQuesrParamTypeAndIds")
+
+
+    @Test(dataProvider = "providingQuesrParamTypeAndIds", dataProviderClass = ProvidersClass.class)
     public void checkStatusCode(String type, String ids)
     {
         given()

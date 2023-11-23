@@ -11,22 +11,11 @@ import static java.util.function.Predicate.not;
 import static org.hamcrest.Matchers.*;
 
 
-public class CheckIfArtistIsUnfollowed {
+public class CheckIfArtistIsUnfollowed extends BaseTests{
     AuthClass authClass = new AuthClass();
     String token = authClass.getAccessToken();
 
-    private static ResponseSpecification responseSpec;
-    @BeforeClass
-    public void checkStatusCodeAndRespContentType()
-    {
-        responseSpec = new ResponseSpecBuilder().
-                expectStatusCode(200).
-                expectContentType(ContentType.JSON).
-                expectResponseTime(lessThan(3000L)) //-> L = milliseconds
-                .build();
 
-
-    }
     @Test
     public void checkIfListDoesNotCotainFollowedArtist() {
         given()

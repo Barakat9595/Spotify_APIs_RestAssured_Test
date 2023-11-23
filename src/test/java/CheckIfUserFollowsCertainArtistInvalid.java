@@ -9,30 +9,14 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
 
-public class CheckIfUserFollowsCertainArtistInvalid {
+public class CheckIfUserFollowsCertainArtistInvalid extends BaseTests {
     AuthClass authClass = new AuthClass();
     String token = authClass.getAccessToken();
 
-    private static ResponseSpecification responseSpec;
-    @BeforeClass
-    public void checkStatusCodeAndRespContentType()
-    {
-        responseSpec = new ResponseSpecBuilder().
-                expectStatusCode(200).
-                expectContentType(ContentType.JSON).
-                expectResponseTime(lessThan(3000L)) //-> L = milliseconds
-                .build();
 
 
-    }
-    @DataProvider
-    public static Object[][] providingQuesrParamTypeAndIds() {
-        return new Object[][]{
-                {"artist","5miyPYjh5EcpOSqloDJPID"}
-        };
-    }
 
-    @Test(dataProvider = "providingQuesrParamTypeAndIds")
+    @Test(dataProvider = "dataOfFollowing", dataProviderClass = ProvidersClass.class)
     public void checkIfUserFollowsCertainArtistValidScenario(String type, String ids)
     {
         given()
@@ -49,7 +33,7 @@ public class CheckIfUserFollowsCertainArtistInvalid {
     }
 
 
-    @Test(dataProvider = "providingQuesrParamTypeAndIds")
+    @Test(dataProvider = "dataOfFollowing", dataProviderClass = ProvidersClass.class)
     public void checkResponseStatusCode(String type, String ids)
     {
         given()

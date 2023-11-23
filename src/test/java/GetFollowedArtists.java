@@ -8,22 +8,12 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.lessThan;
 
-public class GetFollowedArtists {
+public class GetFollowedArtists extends BaseTests {
     AuthClass authClass = new AuthClass();
     String token = authClass.getAccessToken();
 
-    private static ResponseSpecification responseSpec;
-    @BeforeClass
-    public void checkStatusCodeAndRespContentType()
-    {
-        responseSpec = new ResponseSpecBuilder().
-                expectStatusCode(200).
-                expectContentType(ContentType.JSON).
-                expectResponseTime(lessThan(3000L)) //-> L = milliseconds
-                .build();
 
 
-    }
     @Test
     public void checkIfListCotainsFollowedArtist() {
         given()
