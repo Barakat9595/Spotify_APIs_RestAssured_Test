@@ -12,8 +12,6 @@ import static org.hamcrest.Matchers.*;
 
 
 public class CheckIfArtistIsUnfollowed extends BaseTests{
-    AuthClass authClass = new AuthClass();
-    String token = authClass.getAccessToken();
 
 
     @Test

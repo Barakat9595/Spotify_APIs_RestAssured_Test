@@ -9,9 +9,9 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
 
-public class UnfollowArtist {
-    AuthClass authClass = new AuthClass();
-    String token = authClass.getAccessToken();
+public class UnfollowArtist extends BaseTests {
+
+
 
     private static ResponseSpecification responseSpec;
     @BeforeClass

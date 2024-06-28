@@ -10,8 +10,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
 
 public class CheckIfUserFollowsCertainArtistInvalid extends BaseTests {
-    AuthClass authClass = new AuthClass();
-    String token = authClass.getAccessToken();
+
 
 
 

@@ -12,8 +12,7 @@ import static org.hamcrest.Matchers.*;
 
 
 public class GettingUserTopTrack extends BaseTests {
-    AuthClass authClass = new AuthClass();
-    String token = authClass.getAccessToken();
+
 
 
     @Test(dataProvider = "providingItem", dataProviderClass = ProvidersClass.class)

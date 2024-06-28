@@ -9,10 +9,10 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
 
-public class FollowingArtist {
+public class FollowingArtist extends BaseTests{
 
-    AuthClass authClass = new AuthClass();
-    String token = authClass.getAccessToken();
+
+
 
 
 

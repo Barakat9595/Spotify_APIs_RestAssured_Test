@@ -7,6 +7,9 @@ import static org.hamcrest.Matchers.lessThan;
 
 public class BaseTests {
     protected static ResponseSpecification responseSpec;
+
+    AuthClass authClass = new AuthClass("insertYourToken");
+    String token = authClass.getAccessToken();
     @BeforeClass
     public void checkStatusCodeAndRespContentType()
     {

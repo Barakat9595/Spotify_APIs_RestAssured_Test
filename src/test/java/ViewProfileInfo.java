@@ -12,8 +12,8 @@ import static io.restassured.RestAssured.given;
 public class ViewProfileInfo {
 
     //creating an instance of the class AuthClass to be able to use the token
-    AuthClass authClass = new AuthClass();
-    String token = authClass.getAccessToken();
+
+    String token = AuthClass.getAccessToken();
 
 
     private static ResponseSpecification responseSpec;
